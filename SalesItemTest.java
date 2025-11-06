@@ -69,4 +69,22 @@ public class SalesItemTest
         assertEquals("test name", salesIte1.getName());
         assertEquals(1000, salesIte1.getPrice());
     }
+
+    @Test
+    public void testAddCommentAuthor()
+    {
+        SalesItem salesIte1 = new SalesItem("test name", 1000);
+        assertEquals(true, salesIte1.addComment("James Duckling", "This book is great. I perform brain surgery every week now.", 4));
+        assertEquals(false, salesIte1.addComment("James Duckling", "Something", 2));
+    }
+
+    @Test
+    public void testRatingBoundaries()
+    {
+        SalesItem salesIte1 = new SalesItem("Test1", 123);
+        assertEquals(false, salesIte1.addComment("Test1", "Test1", 0));
+        assertEquals(false, salesIte1.addComment("Test2", "Test2", 6));
+    }
 }
+
+
