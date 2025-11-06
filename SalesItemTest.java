@@ -85,6 +85,18 @@ public class SalesItemTest
         assertEquals(false, salesIte1.addComment("Test1", "Test1", 0));
         assertEquals(false, salesIte1.addComment("Test2", "Test2", 6));
     }
+
+    @Test
+    public void testFindMostHelpfulComment()
+    {
+        SalesItem salesIte2 = new SalesItem("test", 123);
+        assertEquals(true, salesIte2.addComment("test", "test", 3));
+        salesIte2.upvoteComment(0);
+        Comment comment1 = salesIte2.findMostHelpfulComment();
+        assertNotNull(comment1);
+        assertNotNull(comment1.getFullDetails());
+    }
 }
+
 
 
